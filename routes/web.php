@@ -14,5 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return view('welcome'); 
 });
+
+Route::get('/index', 'App\Http\Controllers\MovieController@index');
+Route::get('/index/create','App\Http\Controllers\MovieController@create'); 
+Route::post('/index','App\Http\Controllers\MovieController@store'); 
+Route::get('/index/{id}','App\Http\Controllers\MovieController@show');
+Route::delete('/index/{id}','App\Http\Controllers\MovieController@destroy'); 
