@@ -45,6 +45,36 @@ class MovieController extends Controller
         return redirect('/index/')->with('mssg','La película a sido registrada'); 
     }
 
+        public function edit($id){
+    
+        
+        $movie = Movie::findOrFail($id); 
+        return view('movies.edit', ['movie' => $movie]);
+    }
+
+        public function update(Request $request, $id){
+
+        $movie = Movie::findOrFail($id); 
+        //return $movie; 
+    
+        /*$movie->title = request('title'); 
+        $movie->synopsis = request('synopsis'); 
+        $movie->year = request('year'); 
+        $movie->cover = request('cover');   */
+
+        $movie->title = $request->input('title'); 
+        $movie->synopsis = $request->input('synopsis'); 
+        $movie->year = $request->input('year'); 
+        $movie->cover = $request->input('cover');   
+
+        $movie->save();    
+
+        return redirect('/index/')->with('mssg','La película a sido editada'); 
+
+
+    }
+
+
     public function destroy($id) {
         $movie = Movie::findOrFail($id);
         $movie->delete(); 
