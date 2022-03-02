@@ -12,18 +12,20 @@
                     Lista de Películas
                 </div>
 
-                <form action="/index/" method="">
+                <form action="" method="">
                     @csrf
 
-                    <select name="selector">
-                        <option value="" disabled selected> --- ID --- </option>
-                        @foreach($movies as $movie)
-                        <option value="{{ $movie->id }}">{{ $movie->id }}</option>
-                        @endforeach
+                    <select id="url" name="selector">
+                        <option value="" name="option" disabled selected> --- ID --- </option>
 
+                        @foreach($movies as $movie)
+                        <option value="/index/{{ $movie->id }}">{{ $movie->id }}</option>
+                        @endforeach
+                        
                     </select>
 
-                    <button>Buscar</button>
+                    <button type="button" onclick="openUrl()">Buscar</button>
+
                 </form>
 
                 <div>
@@ -37,10 +39,14 @@
                 {{ $movie->id }} - {{ $movie->title }} - {{ $movie->synopsis }} - {{ $movie->year }} - {{ $movie->cover }}
                 </div>
                 @endforeach
-
-
-
-
             </div>
         </div>
+
+                <script>
+                function openUrl(){
+                var select = document.getElementById("url");
+                var url = select.options[select.selectedIndex].value;
+                window.open(url,'_self');}
+                </script>
+
 @endsection

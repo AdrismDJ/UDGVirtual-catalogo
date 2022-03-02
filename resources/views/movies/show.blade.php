@@ -17,6 +17,9 @@
     <button>Borrar esta película</button>
 </form>
 
+<br>
+
+<a href="/index/{{ $movie->id }}/edit">Modificar</a>
 
 </div>
 
