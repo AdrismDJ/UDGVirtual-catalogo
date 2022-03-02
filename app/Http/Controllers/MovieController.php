@@ -55,12 +55,6 @@ class MovieController extends Controller
         public function update(Request $request, $id){
 
         $movie = Movie::findOrFail($id); 
-        //return $movie; 
-    
-        /*$movie->title = request('title'); 
-        $movie->synopsis = request('synopsis'); 
-        $movie->year = request('year'); 
-        $movie->cover = request('cover');   */
 
         $movie->title = $request->input('title'); 
         $movie->synopsis = $request->input('synopsis'); 
